@@ -10,7 +10,7 @@ public class IntArrayWorker
   {
     matrix = theMatrix;
   }
-  
+
   /**
    * Method to return the total 
    * @return the total of the values in the array
@@ -98,5 +98,17 @@ public class IntArrayWorker
       }
     }
   }
+  // methods written by me
+  public int getCount(int value) {
+      int count = 0;
+      for (int [] rowArray : matrix) {
+          for (int item : rowArray) {
+              if (item == value) {
+                  count++;
+              }
+          }
+      }
+          return count;
+      }
  
 }
