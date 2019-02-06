@@ -122,5 +122,12 @@ public class IntArrayWorker
           }
           return largest;
       }
- 
+      public int getColTotal(int column) {
+      int total = 0;
+          for (int[] rowArray : matrix) {
+                 total += rowArray[column]; //[column];
+              }
+
+              return total;
+          }
 }
