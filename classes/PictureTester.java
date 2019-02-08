@@ -13,7 +13,9 @@ public class PictureTester
   {
     Picture beach = new Picture("images/beach.jpg");
     beach.explore(); // comment these out in repl.it
-    beach.zeroBlue();
+    //beach.zeroBlue();
+    //beach.keepOnlyBlue();
+    beach.negate();
     beach.explore(); // comment these out in repl.it
 
     // uncomment this in repl.it to test your code!!
