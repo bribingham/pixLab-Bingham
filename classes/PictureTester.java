@@ -15,7 +15,8 @@ public class PictureTester
     beach.explore(); // comment these out in repl.it
     //beach.zeroBlue();
     //beach.keepOnlyBlue();
-    beach.negate();
+   // beach.negate();
+    beach.grayscale();
     beach.explore(); // comment these out in repl.it
 
     // uncomment this in repl.it to test your code!!
@@ -68,7 +69,7 @@ public class PictureTester
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
-    //testGrayscale();
+   // testGrayscale();
     //testFixUnderwater();
     //testMirrorVertical();
     //testMirrorTemple();

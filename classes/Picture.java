@@ -117,6 +117,17 @@ public class Picture extends SimplePicture
       }
     }
   }
+  public void grayscale() {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels) {
+      for (Pixel pixelObj : rowArray) {
+        int average = pixelObj.getGreen() + pixelObj.getBlue() + pixelObj.getRed();
+        pixelObj.setGreen(average);
+        pixelObj.setBlue(average);
+        pixelObj.setRed(average);
+      }
+    }
+  }
   
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
@@ -247,7 +258,8 @@ public class Picture extends SimplePicture
     beach.explore();
    //beach.zeroBlue();
   // beach.keepOnlyBlue();
-    beach.negate();
+ //   beach.negate();
+    beach.grayscale();
     beach.explore();
   }
   
