@@ -122,9 +122,9 @@ public class Picture extends SimplePicture
     for (Pixel[] rowArray : pixels) {
       for (Pixel pixelObj : rowArray) {
         int average = pixelObj.getGreen() + pixelObj.getBlue() + pixelObj.getRed();
-        pixelObj.setGreen(average);
-        pixelObj.setBlue(average);
-        pixelObj.setRed(average);
+        pixelObj.setGreen(average/3);
+        pixelObj.setBlue(average/3);
+        pixelObj.setRed(average/3);
       }
     }
   }
@@ -137,13 +137,13 @@ public class Picture extends SimplePicture
     Pixel[][] pixels = this.getPixels2D();
     Pixel leftPixel = null;
     Pixel rightPixel = null;
-    int width = pixels[0].length;
+    int width = pixels[0].length - 1;
     for (int row = 0; row < pixels.length; row++)
     {
       for (int col = 0; col < width / 2; col++)
       {
         leftPixel = pixels[row][col];
-        rightPixel = pixels[row][width - 1 - col];
+        rightPixel = pixels[row][width - col];
         rightPixel.setColor(leftPixel.getColor());
       }
     } 
@@ -166,8 +166,7 @@ public class Picture extends SimplePicture
       {
         
         leftPixel = pixels[row][col];      
-        rightPixel = pixels[row]                       
-                         [mirrorPoint - col + mirrorPoint];
+        rightPixel = pixels[row] [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
       }
     }
@@ -254,12 +253,13 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("images/beach.jpg");
     beach.explore();
    //beach.zeroBlue();
   // beach.keepOnlyBlue();
  //   beach.negate();
-    beach.grayscale();
+   // beach.grayscale();
+    beach.mirrorVertical();
     beach.explore();
   }
   
