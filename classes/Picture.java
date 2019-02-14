@@ -132,21 +132,36 @@ public class Picture extends SimplePicture
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */
-  public void mirrorVertical()
+  public void mirrorVerticalRightToLeft()
   {
     Pixel[][] pixels = this.getPixels2D();
     Pixel leftPixel = null;
     Pixel rightPixel = null;
     int width = pixels[0].length - 1;
-    for (int row = 0; row < pixels.length; row++)
+    for (int row = 0; row < pixels.length; row++) // loops through the rows of the picture
     {
       for (int col = 0; col < width / 2; col++)
       {
         leftPixel = pixels[row][col];
         rightPixel = pixels[row][width - col];
-        rightPixel.setColor(leftPixel.getColor());
+        leftPixel.setColor(rightPixel.getColor());
       }
     } 
+  }
+  public void mirrorHorizontal() {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int height = pixels.length -1 ;
+    int width = pixels[0].length - 1;
+    for (int row = 0; row < height / 2; row++) // loops through the rows of the picture
+    {
+      for (int col = 0; col < width; col++) {
+        bottomPixel = pixels[row][col];
+        topPixel = pixels[height - row][col];
+        topPixel.setColor(bottomPixel.getColor());
+      }
+    }
   }
   
   /** Mirror just part of a picture of a temple */
@@ -216,7 +231,7 @@ public class Picture extends SimplePicture
     this.copy(flowerNoBlue,300,0);
     this.copy(flower1,400,0);
     this.copy(flower2,500,0);
-    this.mirrorVertical();
+    this.mirrorVerticalRightToLeft();
     this.write("collage.jpg");
   }
   
@@ -259,7 +274,8 @@ public class Picture extends SimplePicture
   // beach.keepOnlyBlue();
  //   beach.negate();
    // beach.grayscale();
-    beach.mirrorVertical();
+   // beach.mirrorVerticalRightToLeft();
+    beach.mirrorHorizontal();
     beach.explore();
   }
   
