@@ -128,6 +128,9 @@ public class Picture extends SimplePicture
       }
     }
   }
+  public void fixUnderwater () {
+
+  }
   
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
@@ -202,8 +205,16 @@ public class Picture extends SimplePicture
         leftPixel = pixels[row][col];      
         rightPixel = pixels[row] [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
+        count++;
       }
     }
+    System.out.println(count);
+  }
+  public void mirrorArms () {
+    int mirrorPoint = 190;
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    //Pixel [][] pixels =
   }
   
   /** copy from the passed fromPic to the
@@ -295,7 +306,8 @@ public class Picture extends SimplePicture
    // beach.grayscale();
    // beach.mirrorVerticalRightToLeft();
    // beach.mirrorHorizontal();
-    beach.mirrorHorizontalBotToTop();
+   // beach.mirrorHorizontalBotToTop();
+    beach.mirrorTemple();
     beach.explore();
   }
   
