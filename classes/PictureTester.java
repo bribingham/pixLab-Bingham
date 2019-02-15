@@ -69,9 +69,15 @@ public class PictureTester
     // beach.write("imagesOutput/beach.jpg");
   }
   public static void testMirrorHorizontal () {
+      Picture beach = new Picture("images/beach.jpg");
+      beach.explore();
+      beach.mirrorHorizontal();
+      beach.explore();
+  }
+  public static void testMirrorHorizontalBotToTop () {
     Picture beach = new Picture("images/beach.jpg");
     beach.explore();
-    beach.mirrorHorizontal();
+    beach.mirrorHorizontalBotToTop();
     beach.explore();
   }
   
@@ -124,7 +130,8 @@ public class PictureTester
    // testGrayscale();
     //testFixUnderwater();
    // testMirrorVerticalRightToLeft();
-    testMirrorHorizontal();
+   // testMirrorHorizontal();
+    testMirrorHorizontalBotToTop();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();

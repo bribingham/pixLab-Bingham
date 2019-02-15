@@ -163,6 +163,25 @@ public class Picture extends SimplePicture
       }
     }
   }
+  public void mirrorHorizontalBotToTop() {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int height = pixels.length -1 ;
+    int width = pixels[0].length - 1;
+    for (int row = 0; row < height / 2; row++) // loops through the rows of the picture
+    {
+      for (int col = 0; col < width; col++) {
+        bottomPixel = pixels[row][col];
+        topPixel = pixels[height - row][col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+  }
+  //empty challenge method
+  public void mirrorDiagonal() {
+
+  }
   
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
@@ -275,7 +294,8 @@ public class Picture extends SimplePicture
  //   beach.negate();
    // beach.grayscale();
    // beach.mirrorVerticalRightToLeft();
-    beach.mirrorHorizontal();
+   // beach.mirrorHorizontal();
+    beach.mirrorHorizontalBotToTop();
     beach.explore();
   }
   
