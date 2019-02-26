@@ -1,3 +1,4 @@
+//package com.gradescope.pixlab;
 import java.awt.*;
 import java.awt.font.*;
 import java.awt.geom.*;
@@ -214,9 +215,39 @@ public class Picture extends SimplePicture
     int mirrorPoint = 190;
     Pixel topPixel = null;
     Pixel bottomPixel = null;
-    //Pixel [][] pixels =
+    Pixel [][] pixels = this.getPixels2D();
+      for (int row = 160; row < mirrorPoint; row++) {
+        for (int col = 103; col < 170; col++) {
+          topPixel = pixels[row][col];
+          bottomPixel = pixels[mirrorPoint - row + mirrorPoint][col];
+          bottomPixel.setColor(topPixel.getColor());
+        }
+      }
+      int mirrorPoint2 = 192;
+      Pixel topPixel2 = null;
+      Pixel bottomPixel2 = null;
+        for (int row = 170; row < mirrorPoint2; row++) {
+          for (int col = 240; col < 295; col++) {
+            topPixel2 = pixels[row][col];
+            bottomPixel2 = pixels[mirrorPoint2 - row + mirrorPoint2][col];
+            bottomPixel2.setColor(topPixel2.getColor());
+          }
+        }
   }
-  
+  public void mirrorGull () {
+    int mirrorPoint = 345;
+    Pixel rightPixel = null;
+    Pixel leftPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    for (int row = 235; row < 323; row++) {
+      for (int col = 238; col < mirrorPoint; col++) {
+        //pixels[row][mirrorPoint - col + mirrorPoint] = pixels[row][col];
+        leftPixel = pixels[row][col];
+        rightPixel = pixels [row][mirrorPoint - col + mirrorPoint];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+  }
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture
@@ -246,6 +277,41 @@ public class Picture extends SimplePicture
         toPixel.setColor(fromPixel.getColor());
       }
     }   
+  }
+  public void copy2 (Picture fromPic, int startRow, int endRow, int startCol, int endCol) {
+    Pixel fromPixel = null;
+    Pixel toPixel = null;
+    Pixel[][] toPixels = this.getPixels2D();
+    Pixel[][] fromPixels = fromPic.getPixels2D();
+    for (int fromRow = endRow, toRow = startRow;
+         fromRow < fromPixels.length &&
+                 toRow < toPixels.length;
+         fromRow++, toRow++)
+    {
+      for (int fromCol = endCol, toCol = startCol;
+           fromCol < fromPixels[0].length &&
+                   toCol < toPixels[0].length;
+           fromCol++, toCol++)
+      {
+        fromPixel = fromPixels[fromRow][fromCol];
+        toPixel = toPixels[toRow][toCol];
+        toPixel.setColor(fromPixel.getColor());
+      }
+    }
+  }
+  public void myCollage() {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    Picture butterfly1 = new Picture("butterfly1.jpg");
+    this.copy(caterpillar,0,0);
+    this.copy(butterfly1,100,0);
+    this.copy(caterpillar,200,0);
+    Picture flowerNoBlue = new Picture(butterfly1);
+    flowerNoBlue.zeroBlue();
+    this.copy(flowerNoBlue,300,0);
+    this.copy(caterpillar,400,0);
+    this.copy(butterfly1,500,0);
+    this.mirrorVerticalRightToLeft();
+    this.write("collage.jpg");
   }
 
   /** Method to create a collage of several pictures */
@@ -291,6 +357,9 @@ public class Picture extends SimplePicture
       }
     }
   }
+  public static void edgeDetection2 (int num) {
+
+  }
   
   
   /* Main method for testing - each class in Java can have a main 
@@ -299,16 +368,28 @@ public class Picture extends SimplePicture
   public static void main(String[] args) 
   {
     Picture beach = new Picture("images/beach.jpg");
-    beach.explore();
-   //beach.zeroBlue();
-  // beach.keepOnlyBlue();
- //   beach.negate();
-   // beach.grayscale();
-   // beach.mirrorVerticalRightToLeft();
-   // beach.mirrorHorizontal();
-   // beach.mirrorHorizontalBotToTop();
+    Picture snowman = new Picture("images/snowman.jpg");
+    Picture seagull = new Picture("images/seagull.jpg");
+    Picture fromPic = new Picture("images/fromPic.jpg");
+    Picture butterfly1 = new Picture("images/butterfly1.jpg");
+   // seagull.explore();
+    seagull.mirrorGull();
+    //seagull.explore();
+    // beach.explore();
+    //snowman.explore();
+    fromPic.copy2(fromPic, 4, 6, 5, 8);
+    beach.zeroBlue();
+    butterfly1.myCollage();
+    beach.keepOnlyBlue();
+    beach.negate();
+    beach.grayscale();
+    beach.mirrorVerticalRightToLeft();
+    beach.mirrorHorizontal();
+    beach.mirrorHorizontalBotToTop();
+    snowman.mirrorArms();
+   // snowman.explore();
     beach.mirrorTemple();
-    beach.explore();
+   //  beach.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this

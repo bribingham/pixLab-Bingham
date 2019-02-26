@@ -13,11 +13,11 @@ public class PictureTester
   {
     Picture beach = new Picture("images/beach.jpg");
     beach.explore(); // comment these out in repl.it
-    //beach.zeroBlue();
+    beach.zeroBlue();
     //beach.keepOnlyBlue();
    // beach.negate();
    // beach.grayscale();
-    beach.mirrorVerticalRightToLeft();
+    //beach.mirrorVerticalRightToLeft();
     beach.explore(); // comment these out in repl.it
 
     // uncomment this in repl.it to test your code!!
@@ -47,6 +47,16 @@ public class PictureTester
     // uncomment this in repl.it to test your code!!
     // beach.write("imagesOutput/beach.jpg");
   }
+  public static void testCopy2 () {
+    Picture fromPic = new Picture("images/fromPic.jpg");
+    fromPic.explore(); // comment these out in repl.it
+    fromPic.copy2(fromPic, 4, 6, 5, 8);
+    fromPic.explore(); // comment these out in repl.it
+  }
+  public static void testMyCollage() {
+    Picture butterfly1 = new Picture("images/butterfly1.jpg");
+    butterfly1.myCollage();
+  }
   public static void testGrayscale()
   {
     Picture beach = new Picture("images/beach.jpg");
@@ -56,6 +66,19 @@ public class PictureTester
 
     // uncomment this in repl.it to test your code!!
     // beach.write("imagesOutput/beach.jpg");
+  }
+  public static void testMirrorArms (){
+  Picture snowman = new Picture("images/snowman.jpg");
+    snowman.explore();
+    snowman.mirrorArms();
+    snowman.explore();
+  }
+  public static void testMirrorGull () {
+    Picture seagull = new Picture("images/seagull.jpg");
+    seagull.explore();
+    seagull.mirrorGull();
+    seagull.explore();
+
   }
   public static void testMirrorVerticalRightToLeft()
   {
@@ -122,17 +145,21 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    //testZeroBlue();
+    testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
    // testGrayscale();
+    //testMirrorArms();
+   // testMirrorGull();
+    //testCopy2();
+    testMyCollage();
     //testFixUnderwater();
    // testMirrorVerticalRightToLeft();
    // testMirrorHorizontal();
    // testMirrorHorizontalBotToTop();
-    testMirrorTemple();
+   // testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
